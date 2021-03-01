@@ -1,4 +1,41 @@
-.Input label {
+.Mega .Input label {
     font-size: 16px;
     text-align: center;
+}
+
+.Mega .Input input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Mega .Input input:out-of-range {
+    border-color: #ff1515;
+}
+
+.Mega button {
+    margin-bottom: 10px;
+}
+
+.Mega .RenderNumeros {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Mega .DivNumero {
+    background-color: #188038;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.Mega .Numero {
+    font-weight: bold;
+    color: #FFFFFF;
 }

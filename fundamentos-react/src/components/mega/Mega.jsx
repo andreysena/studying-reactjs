@@ -1,42 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './Mega.css'
 
 export default (props) => {
-
-    let numeros = []
-    let num = 0
-    const [quantidade, setQuantidade] = useState(0)
-    const [numerosSorteados, setNumerosSorteados] = useState([])
+    
+    const [quantidade, setQuantidade] = useState(1)
+    const [numerosSorteados, setNumerosSorteados] = useState([0])
 
     function gerarNumeros(qtde) {
 
+        
+        
         if(qtde > 60){
-            alert("Você deve digitar valores menores ou igual a 60")
+            alert("Você deve digitar valores menores ou igual a 60!")
         }else{
+            let numerosAleatorios = []
+            let numAleatorio = 0
+
             for(let i = 0; i < qtde; i++){
             
-                num = parseInt(Math.random() * (61 - 1) + 1)
+                numAleatorio = parseInt(Math.random() * (61 - 1) + 1)
     
-                if(numeros.includes(num)){
+                if(numerosAleatorios.includes(numAleatorio)){
                     i--
                 }else{
-                    numeros.push(num)
+                    numerosAleatorios.push(numAleatorio)
                 }
                 
             }
-            setNumerosSorteados(numeros.sort((a, b)=> {
-                return a-b
-            
-            }).toString().replace(/,/g, ', '))
+            setNumerosSorteados(numerosAleatorios.sort((a, b)=> {
+                return a - b
+            }))
+
+
         }
         
     }
 
-
     return (
-        <div>
-            <h4>Sorteador de números</h4>
+        <div className="Mega">
+            <h4>Sorteador de números para Mega-Sena</h4>
 
             <div className="Input">
                 <label htmlFor="qtdeInput">Informe a quantidade de números a serem sorteados:</label>
@@ -45,12 +48,24 @@ export default (props) => {
                     type="number" 
                     value={quantidade} 
                     onChange={(e) => setQuantidade(+e.target.value) }
+                    min={1}
+                    max={60}
                 />
                 
             </div>
             <button onClick={() => gerarNumeros(quantidade)}>Sortear números</button>
-            <h3>Números sorteados:</h3>
-            <p>{ numerosSorteados }</p>
+            <h4>Números sorteados:</h4>
+            <div className="RenderNumeros">
+                {
+                    numerosSorteados.map(n => {
+                        return (
+                            <div className="DivNumero">
+                                <a className="Numero">{ n }</a>    
+                            </div>
+                        ) 
+                    })
+                }
+            </div>
         </div>
     )
 }
