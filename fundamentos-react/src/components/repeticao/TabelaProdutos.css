@@ -1,0 +1,20 @@
+.TabelaProdutos {
+    font-size: 1rem;
+}
+
+.TabelaProdutos th {
+    background-color: teal;
+    color: #FFF;
+}
+
+.IdColumn {
+    width: 20%;
+}
+
+.TabelaProdutos .LinhaPar {
+    background-color: gainsboro;
+}
+
+.TabelaProdutos .LinhaImpar {
+    background-color: dimgray;
+}
