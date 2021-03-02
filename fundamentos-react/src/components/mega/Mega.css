@@ -3,6 +3,12 @@
     text-align: center;
 }
 
+.Mega .Input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .Mega .Input input {
     margin-top: 20px;
     margin-bottom: 20px;

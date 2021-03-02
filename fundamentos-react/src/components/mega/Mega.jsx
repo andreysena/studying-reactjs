@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import './Mega.css'
 
 export default (props) => {
     
-    const [quantidade, setQuantidade] = useState(1)
+    const [quantidade, setQuantidade] = useState(6)
     const [numerosSorteados, setNumerosSorteados] = useState([0])
 
     function gerarNumeros(qtde) {
 
         
         
-        if(qtde > 60){
+        if(qtde < 6 || qtde > 60){
             alert("Você deve digitar valores menores ou igual a 60!")
+            
         }else{
+
             let numerosAleatorios = []
             let numAleatorio = 0
 
@@ -26,12 +28,10 @@ export default (props) => {
                 }else{
                     numerosAleatorios.push(numAleatorio)
                 }
-                
             }
             setNumerosSorteados(numerosAleatorios.sort((a, b)=> {
                 return a - b
             }))
-
 
         }
         
@@ -48,10 +48,9 @@ export default (props) => {
                     type="number" 
                     value={quantidade} 
                     onChange={(e) => setQuantidade(+e.target.value) }
-                    min={1}
+                    min={6}
                     max={60}
                 />
-                
             </div>
             <button onClick={() => gerarNumeros(quantidade)}>Sortear números</button>
             <h4>Números sorteados:</h4>
